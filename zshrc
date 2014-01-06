@@ -16,8 +16,9 @@ source $HOME/.yadr/zsh/zsh-aliases.zsh
 source $HOME/.yadr/zsh/zsh-aliases.zsh
 
 autoload -U predict-on
-zle -N predict-on
+bindkey -e
 zle -N predict-off
+zle -N predict-on
 bindkey '^X^Z' predict-on
 bindkey '^X^A' predict-off
 zstyle ':predict' verbose 'yes'
