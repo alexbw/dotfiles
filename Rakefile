@@ -156,7 +156,7 @@ end
 
 def install_fonts
   puts "======================================================"
-  puts "Installing patched fonts for Powerline/Lightline."
+  puts "Installing patched fonts for Powerline."
   puts "======================================================"
   run %{ cp -f $HOME/.yadr/fonts/* $HOME/Library/Fonts }
   puts
@@ -247,6 +247,8 @@ def install_prezto
   run %{ mkdir -p $HOME/.zsh.before }
   run %{ mkdir -p $HOME/.zsh.after }
   run %{ mkdir -p $HOME/.zsh.prompts }
+  run %{ cp $HOME/.yadr/zsh/*.zsh $HOME/.zsh.before/}
+  run %{ mv $HOME/.zsh.before/alex.zsh $HOME/.zsh.after/}
 
   if ENV["SHELL"].include? 'zsh' then
     puts "Zsh is already configured as your shell of choice. Restart your session to load the new settings"
