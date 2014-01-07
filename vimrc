@@ -105,6 +105,8 @@ set scrolloff=8         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
-
 " ================ Custom Settings ========================
 so ~/.yadr/vim/settings.vim
+hi link EasyMotionTarget ErrorMsg
+hi link EasyMotionShade  Comment
+
