@@ -24,7 +24,7 @@ bindkey '^X^A' predict-off
 zstyle ':predict' verbose 'yes'
 
 export PATH="$HOME"/anaconda/bin:/usr/local/bin:/usr/local/sbin:"$HOME"/bin::"$HOME"/anaconda/lib:"$HOME"/anaconda/include:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Julia-0.2.0-rc2.app/Contents/Resources/julia/bin:$PATH
-export PYTHONPATH=/Users/Alex/Code/:$PYTHONPATH
+export PYTHONPATH="$HOME"/Code/:$PYTHONPATH
 export CC=clang
 export CXX=clang
 
