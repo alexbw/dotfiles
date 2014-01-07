@@ -2,6 +2,7 @@
 " This must be first, because it changes other options as a side effect.
 set shell=/bin/sh
 set nocompatible
+set mouse=a
 
 " TODO: this may not be in the correct place. It is intended to allow overriding <Leader>.
 " source ~/.vimrc.before if it exists.
