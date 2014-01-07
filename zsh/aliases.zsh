@@ -37,6 +37,7 @@ MACVIM_INSTALLED=$?
 if [ $MACVIM_INSTALLED -eq 0 ]; then
   alias vim="mvim -v"
 fi
+alias v='vim'
 
 # vimrc editing
 alias ve='vim ~/.vimrc'
@@ -157,7 +158,7 @@ alias spb="git checkout -b \`sp | tail -2 | grep '#' | sed 's/^ //' | sed 's/[^A
 
 # My awesome stuff
 alias gcam="git commit -a -m"
-alias nb="ipython notebook --pylab inline"
+alias nb="ipython notebook --pylab inline --browser='none'"
 alias pm="python manage.py"
 alias pmr="pm runserver"
 alias a='fasd -a'        # any
