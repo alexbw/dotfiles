@@ -3,7 +3,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-source $HOME/.yadr/zsh/alex.zsh
 source $HOME/.yadr/zsh/aliases.zsh
 source $HOME/.yadr/zsh/colors.zsh
 source $HOME/.yadr/zsh/fasd.zsh
@@ -30,8 +29,6 @@ export CXX=clang
 
 eval "$(fasd --init auto)"
 source ~/.autoenv/activate.sh
-
-unalias rm
 
 autoload -U select-word-style
 select-word-style bashga 
