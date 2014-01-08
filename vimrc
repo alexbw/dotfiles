@@ -107,9 +107,19 @@ set sidescroll=1
 
 " ================ Custom Settings ========================
 so ~/.yadr/vim/settings.vim
+let g:ctrlp_extensions = ['funky']
+nnoremap <Leader>m :CtrlPFunky<Cr>
+" narrow the list down with a word under cursor
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
-
+map <Leader>1 1gt
+map <Leader>2 2gt
+map <Leader>3 3gt
+map <Leader>4 4gt
+map <Leader>5 5gt
+map <Leader>6 6gt
+map <Leader>7 7gt
+map <Leader>8 8gt
 "Use TAB to complete when typing words, else inserts TABs as usual.
 ""Uses dictionary and source files to find matching words to complete.
 
