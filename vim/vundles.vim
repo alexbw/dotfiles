@@ -79,6 +79,7 @@ Bundle "jistr/vim-nerdtree-tabs.git"
 Bundle "scrooloose/nerdtree.git"
 Bundle "kien/ctrlp.vim"
 Bundle "tpope/vim-vinegar"
+Bundle "tacahiroy/ctrlp-funky"
 
 "Search
 Bundle "rking/ag.vim"
