@@ -16,11 +16,11 @@ source $HOME/.yadr/zsh/zsh-aliases.zsh
 autoload predict-on
 predict-on
 bindkey -e
-zle -N predict-off
-zle -N predict-on
-bindkey '^X^Z' predict-on
-bindkey '^X^A' predict-off
-zstyle ':predict' verbose 'yes'
+# zle -N predict-off
+# zle -N predict-on
+# bindkey '^X^Z' predict-on
+# bindkey '^X^A' predict-off
+# zstyle ':predict' verbose 'yes'
 
 export PATH="$HOME"/anaconda/lib:"$HOME"/anaconda/bin:/usr/local/bin:/usr/local/sbin:"$HOME"/bin::"$HOME"/anaconda/lib:"$HOME"/anaconda/include:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Julia-0.2.0-rc2.app/Contents/Resources/julia/bin:$PATH
 export PYTHONPATH="$HOME"/Code/:$PYTHONPATH
@@ -38,7 +38,6 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # Setup zsh-autosuggestions
 source ~/.zsh-autosuggestions/autosuggestions.zsh
-
 # Enable autosuggestions automatically
 zle-line-init() {
     zle autosuggest-start
