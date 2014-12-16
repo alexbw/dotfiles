@@ -157,6 +157,7 @@ alias sp='sprintly'
 alias spb="git checkout -b \`sp | tail -2 | grep '#' | sed 's/^ //' | sed 's/[^A-Za-z0-9 ]//g' | sed 's/ /-/g' | cut -d"-" -f1,2,3,4,5\`"
 
 # My awesome stuff
+alias sc="starcluster"
 alias gcam="git commit -a -m"
 alias nb="ipython notebook --pylab inline --browser='none'"
 alias pm="python manage.py"
@@ -170,3 +171,5 @@ alias sf='fasd -sif'     # interactive file selection
 alias z='fasd_cd -d'     # cd, same functionality as j in autojump
 alias zz='fasd_cd -d -i' # cd with interactive selection
 alias pl='ipython --pylab'
+alias julia='/Applications/Julia-0.2.0.app/Contents/Resources/julia/bin/julia'
+alias w='python $HOME/Code/whetlab-cli/whetlab_cli/cli.py'

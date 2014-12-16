@@ -28,7 +28,11 @@ export CC=gcc
 export CXX=g++
 
 eval "$(fasd --init auto)"
-source ~/.autoenv/activate.sh
 
 autoload -U select-word-style
 select-word-style bashga 
+export DOCKER_HOST=tcp://192.168.59.103:2375
+export SPEARMINT_LOCATION=/Users/Alex/Code/Spearmint
+export DOCS_LOCATION=/Users/Alex/Code/Documentation
+export PYTHON_CLIENT_LOCATION=/Users/Alex/Code/Whetlab-Python-Client
+export KAYAK_LOCATION=/Users/Alex/Code/Kayak
