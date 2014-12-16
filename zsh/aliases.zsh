@@ -171,5 +171,7 @@ alias sf='fasd -sif'     # interactive file selection
 alias z='fasd_cd -d'     # cd, same functionality as j in autojump
 alias zz='fasd_cd -d -i' # cd with interactive selection
 alias pl='ipython --pylab'
-alias julia='/Applications/Julia-0.2.0.app/Contents/Resources/julia/bin/julia'
 alias w='python $HOME/Code/whetlab-cli/whetlab_cli/cli.py'
+alias sc='starcluster'
+alias tad='tmux attach -d'
+>>>>>>> origin/master
