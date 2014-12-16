@@ -174,4 +174,3 @@ alias pl='ipython --pylab'
 alias w='python $HOME/Code/whetlab-cli/whetlab_cli/cli.py'
 alias sc='starcluster'
 alias tad='tmux attach -d'
->>>>>>> origin/master
