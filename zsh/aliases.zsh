@@ -171,6 +171,8 @@ alias sf='fasd -sif'     # interactive file selection
 alias z='fasd_cd -d'     # cd, same functionality as j in autojump
 alias zz='fasd_cd -d -i' # cd with interactive selection
 alias pl='ipython --pylab'
-alias w='python $HOME/Code/whetlab-cli/whetlab_cli/cli.py'
+alias w='python $HOME/Code/Whetlab-Python-Client/whetlab/cli.py'
 alias sc='starcluster'
 alias tad='tmux attach -d'
+alias sci='sc listinstances 2> /dev/null | grep -B 15 "alias=master" | grep "^dns_name: " | cut -d " " -f 2'
+alias scm='ssh -L8889:localhost:8889 -i ~/.ssh/mice2_ec2.pub dattalab@$(sc listinstances 2> /dev/null | grep -B 15 "alias=master" | grep "^dns_name: " | cut -d " " -f 2)'
