@@ -28,6 +28,7 @@ alias du='du -h -d 2'
 alias lsg='ll | grep'
 
 # Alias Editing
+alias al='echo $yadr/zsh/aliases.zsh'
 alias ae='vim $yadr/zsh/aliases.zsh' #alias edit
 alias ar='source $yadr/zsh/aliases.zsh'  #alias reload
 
@@ -174,6 +175,7 @@ alias pl='ipython --pylab'
 alias w='python $HOME/Code/Whetlab-Python-Client/whetlab/cli.py'
 alias sc='starcluster'
 alias tad='tmux attach -d'
-alias sci='sc listinstances 2> /dev/null | grep -B 15 "alias=master" | grep "^dns_name: " | cut -d " " -f 2'
-alias scm='ssh -L8889:localhost:8889 -i ~/.ssh/mice2_ec2.pub dattalab@$(sc listinstances 2> /dev/null | grep -B 15 "alias=master" | grep "^dns_name: " | cut -d " " -f 2)'
+alias sci='sc listinstances 2> /dev/null | grep -B 15 "alias=master" | grep -B 11 "\@sc-checkit" | grep "^dns_name: " | cut -d " " -f 2'
+alias scm='ssh -X -A -C -L8889:localhost:8889 -i ~/.ssh/mice2_ec2.pub dattalab@$(sc listinstances 2> /dev/null | grep -B 15 "alias=master" | grep "^dns_name: " | cut -d " " -f 2)'
+alias scm-whetlab='ssh -X -A -C -L8889:localhost:8889 -i ~/.ssh/whetlabkey.pem whetlab@$(sc listinstances 2> /dev/null | grep -B 15 "alias=master" | grep "^dns_name: " | cut -d " " -f 2)'
 alias zh='cd $HOME'
