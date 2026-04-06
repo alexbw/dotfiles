@@ -15,23 +15,15 @@ This symlinks the active configs:
 | Source | Symlink |
 |--------|---------|
 | `tmux/tmux.conf` | `~/.tmux.conf` |
+| `zsh/zshrc` | `~/.zprezto/runcoms/zshrc` -> `~/.zshrc` |
+| `zsh/zprofile` | `~/.zprezto/runcoms/zprofile` -> `~/.zprofile` |
 
-### Zsh (via Prezto)
-
-Zsh is managed separately by [Prezto](https://github.com/sorin-ionescu/prezto), which owns `~/.zshrc`, `~/.zshenv`, and `~/.zprofile` via its own symlinks into `~/.zprezto/runcoms/`. If Prezto isn't installed:
-
-```bash
-git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-
-for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-done
-```
+The setup script will install [Prezto](https://github.com/sorin-ionescu/prezto) automatically if it's missing, then link our customized zshrc/zprofile into it.
 
 ## What's Active
 
 - **tmux** (`tmux/tmux.conf`) — Tokyo Night theme, `C-q` prefix, vi keybindings, hjkl nav, mouse, OSC passthrough for Claude Code window naming
-- **zsh** — managed by Prezto (not this repo)
+- **zsh** (`zsh/zshrc`, `zsh/zprofile`) — conda, zoxide, bun, cargo, `~/.secrets` sourcing, `cc()` Claude Code tmux session manager, claude-skills PATH
 
 ## What's Dormant (YADR legacy)
 

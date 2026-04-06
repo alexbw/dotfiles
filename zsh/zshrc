@@ -1,0 +1,99 @@
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# Customize to your needs...
+
+# >>> conda initialize >>>
+__conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/alexwiltschko/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/alexwiltschko/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/alexwiltschko/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/alexwiltschko/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Sublime text CLI shortcut
+export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
+
+# Autojump
+eval "$(zoxide init zsh)"
+
+# bun completions
+[ -s "/Users/alexwiltschko/.bun/_bun" ] && source "/Users/alexwiltschko/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# API keys — stored in ~/.secrets (chmod 600, not tracked by git)
+[[ -f "$HOME/.secrets" ]] && source "$HOME/.secrets"
+
+# For beads
+export PATH="$PATH:/Users/alexwiltschko/.local/bin"
+
+# Rust/Cargo
+. "$HOME/.cargo/env"
+# Nano Banana 2 (Gemini 3.1 Flash Image) as default image model
+export NANOBANANA_MODEL=gemini-3.1-flash-image-preview
+
+# Fix Python 3.13 SSL cert verification on macOS
+# OpenSSL's compiled-in default path doesn't resolve the certifi symlink;
+# setting SSL_CERT_FILE explicitly makes urllib and all SSL contexts work.
+export SSL_CERT_FILE="/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/certifi/cacert.pem"
+
+# Claude Code tmux session manager
+# cc        — start claude in current pane (tmux) or create/attach claude-tmux session
+# cc <kw>   — cd via zoxide, start claude (current pane if in tmux, else new window)
+cc() {
+  local session="claude-tmux"
+  if [ -n "$TMUX" ]; then
+    # Already inside tmux — run claude in the current pane
+    if [ -n "$1" ]; then
+      local dir
+      dir=$(zoxide query "$1" 2>/dev/null) || dir=~/Code/life
+      cd "$dir"
+    fi
+    claude --dangerously-skip-permissions
+  elif [ -z "$1" ]; then
+    # Outside tmux, no arg: create or attach
+    if tmux has-session -t "$session" 2>/dev/null; then
+      tmux attach -t "$session"
+    else
+      tmux new-session -s "$session" -c ~/Code/life -n "main" "claude --dangerously-skip-permissions"
+    fi
+  else
+    # Outside tmux, with arg: new window in session
+    local name="$1"
+    local dir
+    dir=$(zoxide query "$name" 2>/dev/null) || dir=~/Code/life
+    if ! tmux has-session -t "$session" 2>/dev/null; then
+      tmux new-session -s "$session" -c "$dir" -n "$name" "claude --dangerously-skip-permissions"
+    else
+      tmux new-window -t "$session" -n "$name" -c "$dir" "claude --dangerously-skip-permissions"
+      tmux attach -t "$session"
+    fi
+  fi
+}
+
+# Claude skills CLI tools
+export PATH="$HOME/Code/claude-skills/bin:$PATH"
