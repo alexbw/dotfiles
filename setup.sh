@@ -61,4 +61,8 @@ for rcfile in zshrc zprofile zpreztorc zshenv zlogin zlogout; do
 done
 
 echo
+echo "slate..."
+link_item "$SCRIPT_DIR/slate/slate" "$HOME/.slate" "~/.slate"
+
+echo
 echo "Done!"
