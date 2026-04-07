@@ -20,6 +20,8 @@ cd ~/Code/dotfiles
 | `zsh/zshrc` | `~/.zprezto/runcoms/zshrc` → `~/.zshrc` |
 | `zsh/zprofile` | `~/.zprezto/runcoms/zprofile` → `~/.zprofile` |
 | `zsh/zpreztorc` | `~/.zprezto/runcoms/zpreztorc` → `~/.zpreztorc` |
+| `git/gitconfig` | `~/.gitconfig` |
+| `ssh/config` | `~/.ssh/config` |
 | `slate/slate` | `~/.slate` |
 
 Prezto's default `zshenv`, `zlogin`, and `zlogout` are also linked to `~/`.
@@ -29,4 +31,6 @@ Prezto's default `zshenv`, `zlogin`, and `zlogout` are also linked to `~/`.
 - **tmux** — Tokyo Night theme, `C-q` prefix, vi keybindings, hjkl nav, mouse, OSC passthrough
 - **zsh** — conda, zoxide, bun, cargo, `~/.secrets` sourcing, `cc()` Claude Code tmux launcher, claude-skills PATH
 - **zpreztorc** — sorin prompt, emacs keybindings, history-substring-search
+- **git** — GitHub credential helper (gh), Git LFS
+- **ssh** — GitHub key config (ed25519)
 - **slate** — window management with hyper key (ctrl+alt+cmd), hjkl positioning, grid snapping

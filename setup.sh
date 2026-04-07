@@ -61,6 +61,15 @@ for rcfile in zshrc zprofile zpreztorc zshenv zlogin zlogout; do
 done
 
 echo
+echo "git..."
+link_item "$SCRIPT_DIR/git/gitconfig" "$HOME/.gitconfig" "~/.gitconfig"
+
+echo
+echo "ssh..."
+mkdir -p "$HOME/.ssh"
+link_item "$SCRIPT_DIR/ssh/config" "$HOME/.ssh/config" "~/.ssh/config"
+
+echo
 echo "slate..."
 link_item "$SCRIPT_DIR/slate/slate" "$HOME/.slate" "~/.slate"
 
