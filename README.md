@@ -1,8 +1,8 @@
 # Dotfiles
 
-Personal dotfiles, forked from [YADR](https://github.com/skwp/dotfiles). Most of the original YADR vim/ruby/git config is still here but dormant. The actively used pieces are **tmux** and **zsh**.
+Personal dotfiles for macOS. Manages **tmux** and **zsh** (via [Prezto](https://github.com/sorin-ionescu/prezto)).
 
-## Quick Start (new machine)
+## Quick Start
 
 ```bash
 git clone git@github.com:alexbw/dotfiles.git ~/Code/dotfiles
@@ -10,21 +10,21 @@ cd ~/Code/dotfiles
 ./setup.sh
 ```
 
-This symlinks the active configs:
+## What It Does
 
-| Source | Symlink |
-|--------|---------|
+`setup.sh` installs Prezto (if missing) and creates symlinks:
+
+| Source | Destination |
+|--------|-------------|
 | `tmux/tmux.conf` | `~/.tmux.conf` |
-| `zsh/zshrc` | `~/.zprezto/runcoms/zshrc` -> `~/.zshrc` |
-| `zsh/zprofile` | `~/.zprezto/runcoms/zprofile` -> `~/.zprofile` |
+| `zsh/zshrc` | `~/.zprezto/runcoms/zshrc` → `~/.zshrc` |
+| `zsh/zprofile` | `~/.zprezto/runcoms/zprofile` → `~/.zprofile` |
+| `zsh/zpreztorc` | `~/.zprezto/runcoms/zpreztorc` → `~/.zpreztorc` |
 
-The setup script will install [Prezto](https://github.com/sorin-ionescu/prezto) automatically if it's missing, then link our customized zshrc/zprofile into it.
+Prezto's default `zshenv`, `zlogin`, and `zlogout` are also linked to `~/`.
 
-## What's Active
+## What's Configured
 
-- **tmux** (`tmux/tmux.conf`) — Tokyo Night theme, `C-q` prefix, vi keybindings, hjkl nav, mouse, OSC passthrough for Claude Code window naming
-- **zsh** (`zsh/zshrc`, `zsh/zprofile`) — conda, zoxide, bun, cargo, `~/.secrets` sourcing, `cc()` Claude Code tmux session manager, claude-skills PATH
-
-## What's Dormant (YADR legacy)
-
-The original YADR vim plugins, ruby gems config, git aliases, iTerm themes, and `Rakefile` installer are still in the repo but not actively used. The old `rake install` workflow still works if you want the full YADR experience, but `setup.sh` is the lightweight path.
+- **tmux** — Tokyo Night theme, `C-q` prefix, vi keybindings, hjkl nav, mouse, OSC passthrough
+- **zsh** — conda, zoxide, bun, cargo, `~/.secrets` sourcing, `cc()` Claude Code tmux launcher, claude-skills PATH
+- **zpreztorc** — sorin prompt, emacs keybindings, history-substring-search
