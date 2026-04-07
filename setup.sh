@@ -74,4 +74,46 @@ echo "slate..."
 link_item "$SCRIPT_DIR/slate/slate" "$HOME/.slate" "~/.slate"
 
 echo
+echo "Nerd Font..."
+if ! ls ~/Library/Fonts/MesloLGSNerdFont* &>/dev/null; then
+    if command -v brew &>/dev/null; then
+        echo "  Installing MesloLGS Nerd Font..."
+        brew install --cask font-meslo-lg-nerd-font
+    else
+        echo "  skip  Nerd Font (install Homebrew first, then: brew install --cask font-meslo-lg-nerd-font)"
+    fi
+else
+    echo "  ok    MesloLGS Nerd Font"
+fi
+
+echo
+echo "Conda..."
+if command -v conda &>/dev/null; then
+    conda config --set auto_activate_base false
+    echo "  ok    auto_activate_base = false"
+else
+    echo "  skip  conda not installed"
+fi
+
+echo
+echo "iTerm2..."
+ITERM_PLIST="$HOME/Library/Preferences/com.googlecode.iterm2.plist"
+if [ -f "$ITERM_PLIST" ]; then
+    # Set font to MesloLGS Nerd Font Mono 12
+    /usr/libexec/PlistBuddy \
+        -c "Set ':New Bookmarks:0:Normal Font' 'MesloLGSNerdFontMono-Regular 12'" \
+        -c "Set ':New Bookmarks:0:Non Ascii Font' 'MesloLGSNerdFontMono-Regular 12'" \
+        "$ITERM_PLIST" 2>/dev/null && echo "  ok    font -> MesloLGS Nerd Font Mono 12"
+    # Set readable ANSI blue for dark backgrounds
+    /usr/libexec/PlistBuddy \
+        -c "Set ':New Bookmarks:0:Ansi 4 Color:Red Component' 0.588235" \
+        -c "Set ':New Bookmarks:0:Ansi 4 Color:Green Component' 0.796078" \
+        -c "Set ':New Bookmarks:0:Ansi 4 Color:Blue Component' 0.996078" \
+        "$ITERM_PLIST" 2>/dev/null && echo "  ok    ANSI blue -> readable on dark bg"
+    echo "  note: Restart iTerm2 for changes to take effect"
+else
+    echo "  skip  iTerm2 not found"
+fi
+
+echo
 echo "Done!"
